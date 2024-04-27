@@ -1,0 +1,35 @@
+<p>category-details works!</p>
+@if(viewMode){
+    <p>viewMode Works</p>
+    @if(currentCategory.categoryId){
+        <h4>Category</h4>
+        <div>
+            <label >
+                <strong>Name:</strong>{{currentCategory.categoryName}}
+            </label>
+        </div>
+        <a class="btn btn-warning" routerLink = "/categories/{{currentCategory.categoryId}}">Edit</a>       
+    }
+    @else {
+        <p>Please click on a Category...</p>
+    }
+}
+@else {
+    @if(currentCategory.categoryId){
+        <div class="edit-form">
+            <h4>Category</h4>
+            <form class="mb-3 ">
+                <div class="form-group">
+                    <label for="name">CategoryName</label>
+                    <input type="text" class="form-control mt-2" id="title" [(ngModel)] = "currentCategory.categoryName" name="name">
+                </div>
+            </form>
+           <button class="btn btn-danger " (click)="deleteCategory()">Delete</button> |
+           <button type="submit" class="btn btn-success " routerLink="/categories" (click)="updateCategory()">Update</button>
+           <p>{{message}}</p>
+        </div>
+    }
+    @else {
+       <p>Cannot access this Category...</p> 
+    }
+}

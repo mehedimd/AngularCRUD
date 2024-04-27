@@ -1,0 +1,32 @@
+<p>category-list works!</p>
+<div class="list row">
+    <div class="col-md-8">
+
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search by name" [(ngModel)] = "name"/>
+            <div class="input-group-append">
+                <button class="btn btn-outline-danger" type="button" (click)="searchName()">Search</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h4>Categories List</h4>
+        <ul class="list-group" >
+            <li class="list-group-item d-flex justify-content-around bg-warning"><span>ID</span><span>CategoryName</span></li>
+            @for (category of categories; track category.categoryId; let i = $index){
+                <li 
+                class="list-group-item d-flex justify-content-around" 
+                [class.active] = "i == currentIndex" 
+                (click)="setActiveCategory(category,category.categoryId)">
+                    <span>{{category.categoryId}}</span>  <span>{{category.categoryName}}</span>
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="col-md-6">
+        <app-category-details [viewMode] = "true" [currentCategory] = "currentCategory">
+        </app-category-details>
+    </div>
+
+
+</div>

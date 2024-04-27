@@ -1,0 +1,16 @@
+<p>add-category works!</p>
+<div>
+    <div class="submit-form">
+        @if(!submitted){
+            <div class="form-group">
+                <label for="name">CategoryName</label>
+                <input type="text" class="form-control mt-3" id="name" required [(ngModel)] = "category.categoryName"/>
+            </div>
+            <button (click)="saveCategory()" class="btn btn-success mt-3">Submit</button>
+        }
+        @else {
+            <h4>Category Was Submitted Successfully</h4>
+            <button (click)="newCategory()" class="btn btn-success">ADD</button>
+        }
+    </div>
+</div>
